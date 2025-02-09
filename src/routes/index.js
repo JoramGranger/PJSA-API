@@ -2,7 +2,7 @@ const express = require("express");
 
 const authRoutes = require("./auth.route");
 const userRoutes = require("./user.route");
-const schoolRoutes = require("./school.routes");
+const schoolRoutes = require("./school.route");
 
 const router = express.Router();
 
