@@ -2,6 +2,7 @@ const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
+let tokenBlacklist = new Set();
 
 exports.register = async (req, res) => {
   try {
@@ -30,6 +31,19 @@ exports.login = async (req, res) => {
 
     const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1d" });
     res.json({ token, role: user.role });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+// 🟢 LOGOUT USER (Add Token to Blacklist)
+exports.logout = async (req, res) => {
+  try {
+    const token = req.header("Authorization").split(" ")[1];
+    if (!token) return res.status(400).json({ message: "No token provided" });
+
+    tokenBlacklist.add(token); // Add token to the blacklist
+    res.json({ message: "User logged out successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
