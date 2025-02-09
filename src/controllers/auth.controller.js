@@ -2,11 +2,16 @@ const User = require("../models/user.model");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
-let tokenBlacklist = new Set();
 
 exports.register = async (req, res) => {
   try {
     const { name, email, password, role } = req.body;
+    
+    // Validate inputs (you may want to add more validations)
+    if (!email || !password || !name || !role) {
+      return res.status(400).json({ message: "Please provide all required fields" });
+    }
+
     const existingUser = await User.findOne({ email });
     if (existingUser) return res.status(400).json({ message: "User already exists" });
 
@@ -23,6 +28,12 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Validate inputs
+    if (!email || !password) {
+      return res.status(400).json({ message: "Please provide both email and password" });
+    }
+
     const user = await User.findOne({ email });
     if (!user) return res.status(400).json({ message: "Invalid credentials" });
 
@@ -36,13 +47,10 @@ exports.login = async (req, res) => {
   }
 };
 
-// 🟢 LOGOUT USER (Add Token to Blacklist)
+// 🟢 LOGOUT USER (No need for token blacklist)
 exports.logout = async (req, res) => {
   try {
-    const token = req.header("Authorization").split(" ")[1];
-    if (!token) return res.status(400).json({ message: "No token provided" });
-
-    tokenBlacklist.add(token); // Add token to the blacklist
+    // No need to manage token blacklist, simply return a logout success message
     res.json({ message: "User logged out successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
