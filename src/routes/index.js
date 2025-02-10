@@ -4,6 +4,8 @@ const authRoutes = require("./auth.route");
 const userRoutes = require("./user.route");
 /* const schoolRoutes = require("./school.route"); */
 const metadataRoutes = require("./metadata.route");
+const academicYearRoutes = require("./academicYear.route");
+const academicTermRoutes = require("./academicTerm.route");
 
 const router = express.Router();
 
@@ -12,5 +14,7 @@ router.use("/auth", authRoutes);
 router.use("/users", userRoutes);
 /* router.use("/schools", schoolRoutes); */
 router.use("/metadata", metadataRoutes);
+router.use("/academic-years", academicYearRoutes);
+router.use("/academic-terms", academicTermRoutes);
 
 module.exports = router;
