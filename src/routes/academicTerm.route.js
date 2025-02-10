@@ -6,7 +6,7 @@ const {
   getAcademicTermById,
   updateAcademicTerm,
   deleteAcademicTerm
-} = require('../controllers/academicTermController');
+} = require('../controllers/academicTerm.controller');
 
 // Authenticate middleware (to protect routes)
 const { authenticate, authorizeRole } = require('../middlewares/auth.middleware');
