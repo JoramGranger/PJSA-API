@@ -1,5 +1,4 @@
 const express = require("express");
-
 const authRoutes = require("./auth.route");
 const userRoutes = require("./user.route");
 /* const schoolRoutes = require("./school.route"); */
@@ -8,7 +7,6 @@ const academicYearRoutes = require("./academicYear.route");
 const academicTermRoutes = require("./academicTerm.route");
 const requirementRoutes = require("./requirement.route");
 const sujectRoutes = require("./subject.route");
-
 const router = express.Router();
 
 // Register all routes
