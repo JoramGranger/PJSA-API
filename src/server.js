@@ -17,9 +17,9 @@ app.use("/pjsa", routes);
 
 // Default Route
 app.get("/", (req, res) => {
-  res.send("Welcome to PJSA API 1.0");
+  res.send("Welcome to PKPA API 1.0");
 });
 
 // Start Server
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 7143;
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
