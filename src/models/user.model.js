@@ -12,7 +12,7 @@ const userSchema = new mongoose.Schema(
     },
     subrole: {
       type: String,
-      enum: ["teacher", "bursar", "classteacher"], // ✅ Define subroles
+      enum: ["teacher", "bursar", "classteacher", "non-teaching"], // ✅ Define subroles
       default: null, // Only applies if role is "staff"
     },
     staff_id: { type: mongoose.Schema.Types.ObjectId, ref: "Staff", default: null },

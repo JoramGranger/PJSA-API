@@ -12,4 +12,3 @@ const metadataSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model("Metadata", metadataSchema);
-
