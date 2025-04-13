@@ -6,7 +6,9 @@ const metadataRoutes = require("./metadata.route");
 const academicYearRoutes = require("./academicYear.route");
 const academicTermRoutes = require("./academicTerm.route");
 const requirementRoutes = require("./requirement.route");
+const requirementSetRoutes = require("./requirementSet.route");
 const sujectRoutes = require("./subject.route");
+const classRoutes = require("./class.route");
 const router = express.Router();
 
 // Register all routes
@@ -17,6 +19,8 @@ router.use("/metadata", metadataRoutes);
 router.use("/academic-years", academicYearRoutes);
 router.use("/academic-terms", academicTermRoutes);
 router.use("/requirements", requirementRoutes);
+router.use("/requirement-sets", requirementSetRoutes);
 router.use("/subjects", sujectRoutes);
+router.use("/classes", classRoutes);
 
 module.exports = router;
