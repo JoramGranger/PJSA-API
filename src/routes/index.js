@@ -11,6 +11,7 @@ const sujectRoutes = require("./subject.route");
 const classRoutes = require("./class.route");
 const studentRoutes = require("./student.route");
 const parentRoutes = require("./parent.route");
+const staffRoutes = require("./staff.route");
 const router = express.Router();
 
 // Register all routes
@@ -26,5 +27,6 @@ router.use("/subjects", sujectRoutes);
 router.use("/classes", classRoutes);
 router.use("/students", studentRoutes);
 router.use("/parents", parentRoutes);
+router.use("/staff", staffRoutes);
 
 module.exports = router;

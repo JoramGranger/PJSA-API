@@ -31,7 +31,8 @@ const staffSchema = new mongoose.Schema(
     },
     email: { 
       type: String, 
-      required: true 
+      required: true,
+      unique: true
     },
     address: { 
       type: String 
@@ -59,10 +60,12 @@ const staffSchema = new mongoose.Schema(
     
     // Documentation
     photo: { 
-      type: String 
+      type: String,
+      default: "", 
     }, // URL to photo
     idDocument: { 
-      type: String 
+      type: String,
+      default: "", 
     }, // URL to ID or passport document
     
     // For teachers only
