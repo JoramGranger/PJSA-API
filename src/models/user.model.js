@@ -17,6 +17,7 @@ const userSchema = new mongoose.Schema(
     },
     staff_id: { type: mongoose.Schema.Types.ObjectId, ref: "Staff", default: null },
     student_id: { type: mongoose.Schema.Types.ObjectId, ref: "Student", default: null },
+    parent_id: { type: mongoose.Schema.Types.ObjectId, ref: "Parent", default: null }
   },
   { timestamps: true }
 );
