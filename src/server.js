@@ -6,12 +6,30 @@ require("dotenv").config();
 // Initialize Express App
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+// ✅ CORS Configuration
+const allowedOrigins = [
+  "http://localhost:3000",            // Local dev
+  "https://pjsa-ui.vercel.app"        // Production frontend (Vercel)
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true // If you're using cookies/auth headers
+  })
+);
 
 // Connect to MongoDB
 connectDB();
 
-// Import and use the centralized routes
+// Routes
 const routes = require("./routes/index");
 app.use("/pjsa", routes);
 
@@ -22,4 +40,6 @@ app.get("/", (req, res) => {
 
 // Start Server
 const PORT = process.env.PORT || 7143;
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on port ${PORT}`)
+);
