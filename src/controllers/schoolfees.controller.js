@@ -2,7 +2,7 @@
 const SchoolFees = require('../models/schoolfees.model');
 const Student = require('../models/student.model');
 const AcademicTerm = require('../models/academicTerm.model');
-const SchoolClass = require('../models/schoolClass.model');
+const SchoolClass = require('../models/class.model');
 
 // Create a new school fees transaction
 async function createSchoolFees(req, res) {
